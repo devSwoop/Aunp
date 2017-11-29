@@ -1,0 +1,27 @@
+{
+  "name": "aunp",
+  "version": "1.0.0",
+  "description": "An untitled node project",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/devSwoop/Aunp.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/devSwoop/Aunp/issues"
+  },
+  "homepage": "https://github.com/devSwoop/Aunp#readme",
+  "dependencies": {
+    "express": "^4.16.2",
+    "pg": "^7.4.0",
+    "request": "^2.83.0"
+  },
+  "devDependencies": {
+    "mocha": "^4.0.1"
+  }
+}
