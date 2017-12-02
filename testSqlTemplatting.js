@@ -1,17 +1,19 @@
 var templatter = require('./lib/sqlTemplatting');
 
-var sql = "bonjour c'est un fichier\
-{{ data.toto }}\
-sql qui possède des\
-{% for (i = 0; i < 5; i++) %}\
-	truc dedans\
-	{% if (1 + 1) %}\
-		qui s'affichent\
-	{% else %}\
-		ou pas\
-	{% endif %}\
-{% endfor %}";
+var sql =
+		'{% for (i = 0; i < 5; i++) %}'+
+			'SELECT * FROM "users" WHERE "users".id = {{ i + "_" + data.decoded.id }}'+
+			'{% if (i >= 3) %}'+
+				'\nWHERE "users".name = {{ data.toto }}'+
+			'{% else %}'+
+				' {{data.void}} '+
+			'{% endif %}'+
+		'{% endfor %}';
 var data = {
-	toto : ' TOTO '
+	void : '',
+	toto : ' TOTO ',
+	decoded : {
+		id : 'ID_USER'
+	}
 }
 console.log(templatter.template(sql, data));
