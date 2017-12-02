@@ -1,8 +1,8 @@
-{% for (i = 0; i < 5; i++) %}
-	SELECT * FROM "users" WHERE "users".id = {{ i + "_" + data.decoded.id }}
-	{% if (i >= 3) %}
-		WHERE "users".name = {{ data.toto }}
+{% for (i = 0; i < data.tables.length; i++) %}
+	SELECT * FROM "{{ data.tables[i] }}"
+	WHERE {{ data.tables[i] + ".id" }} = {{ i }}
+	{% if (i >= 1) %}
+		AND toto = {{ data.tables.length }}
 	{% else %}
-		{{data.void}}
 	{% endif %}
 {% endfor %}
