@@ -1,14 +1,6 @@
 var templatter = require('./lib/sqlTemplatting');
+const fs = require('fs');
 
-var sql =
-		'{% for (i = 0; i < 5; i++) %}'+
-			'SELECT * FROM "users" WHERE "users".id = {{ i + "_" + data.decoded.id }}'+
-			'{% if (i >= 3) %}'+
-				'\nWHERE "users".name = {{ data.toto }}'+
-			'{% else %}'+
-				' {{data.void}} '+
-			'{% endif %}'+
-		'{% endfor %}';
 var data = {
 	void : '',
 	toto : ' TOTO ',
@@ -16,4 +8,5 @@ var data = {
 		id : 'ID_USER'
 	}
 }
+var sql = fs.readFileSync('./test.sql', 'utf8');
 console.log(templatter.template(sql, data));
