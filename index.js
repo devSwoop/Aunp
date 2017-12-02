@@ -1,5 +1,11 @@
-let toto = (text) => {
-	console.log(text);
-}
+const express 	= require('express');
+const helper 	= require('./lib/helper');
+const path 		= require('path');
+const init 		= require('./lib/initialize');
 
-toto('coucou');
+module.exports = {
+	init : function (app, directory) {
+		init.initAunp(this, app, directory);
+		init.loadComponents(this);
+	}
+}
