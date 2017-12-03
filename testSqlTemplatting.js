@@ -1,17 +1,17 @@
 var templatter = require('./lib/sqlTemplatting');
+const fs = require('fs');
 
-var sql = "bonjour c'est un fichier\
-{{ data.toto }}\
-sql qui possède des\
-{% for (i = 0; i < 5; i++) %}\
-	truc dedans\
-	{% if (1 + 1) %}\
-		qui s'affichent\
-	{% else %}\
-		ou pas\
-	{% endif %}\
-{% endfor %}";
 var data = {
-	toto : ' TOTO '
+	void : '',
+	toto : ' TOTO ',
+	decoded : {
+		id : 'ID_USER'
+	},
+	tables : [
+		'user',
+		'articles',
+		'comments'
+	]
 }
+var sql = fs.readFileSync('./test.sql', 'utf8');
 console.log(templatter.template(sql, data));
