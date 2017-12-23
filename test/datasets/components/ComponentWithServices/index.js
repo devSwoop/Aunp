@@ -1,12 +1,11 @@
 const express = require('express');
-const AunpComponent = require('../../../../lib/components/Component').constructor;
+const AunpComponent = require('../../../../lib/components/Component');
 
-class Component extends AunpComponent {
+class ComponentWithServices extends AunpComponent {
 	constructor () {
 		super(__dirname);
-		this.routes = [];
 		this.addService(['Event', 'ValidService']);
 	}
 }
 
-module.exports = new Component;
+module.exports = ComponentWithServices;

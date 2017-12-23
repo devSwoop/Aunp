@@ -7,12 +7,12 @@ const serviceManager 	= require('./lib/serviceManager');
 const componentManager 	= require('./lib/componentManager');
 
 var aunp = {
-	init : function (app, directory) {
+	init 	: function (app, directory) {
 		init.initAunp(aunp, app, directory);
 		init.loadServices(aunp);
 		init.loadComponents(aunp);
 	},
-	add 				: {
+	add 	: {
 		service 	: function (toAdd) {
 			serviceManager.addService(aunp, toAdd);
 		},

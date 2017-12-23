@@ -30,7 +30,7 @@ describe('Components', function() {
 
 			init.loadServices(aunp);
 			init.loadComponents(aunp);
-			assert.equal(aunp.components.Component, component);
+			assert.equal(aunp.components.AunpComponent.constructor, component);
 		});
 
 		it('should load app component', function () {
@@ -38,14 +38,14 @@ describe('Components', function() {
 
 			init.loadServices(aunp);
 			init.loadComponents(aunp);
-			assert.equal(aunp.components.ValidComponent, component);
+			assert.equal(aunp.components.ValidComponent.constructor, component);
 		});
 
 		it('should load component on the fly', function () {
 			let component = require('./components/ValidComponent');
 
 			aunp.add.component(component);
-			assert.equal(aunp.components.ValidComponent, component);
+			assert.equal(aunp.components.ValidComponent.constructor, component);
 		});
 
 	});
