@@ -1,3 +1,4 @@
 module.exports = {
-	appDirectory : 'components'
+	componentsDirectory : 'components',
+	servicesDirectory 	: 'services'
 }
