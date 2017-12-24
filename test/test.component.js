@@ -30,7 +30,7 @@ describe('Components', function() {
 
 			init.loadServices(aunp);
 			init.loadComponents(aunp);
-			assert.equal(aunp.components.AunpComponent.constructor, component);
+			assert.equal(aunp.components.AunpComponent, component);
 		});
 
 		it('should load app component', function () {
@@ -38,14 +38,14 @@ describe('Components', function() {
 
 			init.loadServices(aunp);
 			init.loadComponents(aunp);
-			assert.equal(aunp.components.ValidComponent.constructor, component);
+			assert.equal(aunp.components.ValidComponent, component);
 		});
 
 		it('should load component on the fly', function () {
 			let component = require('./components/ValidComponent');
 
 			aunp.add.component(component);
-			assert.equal(aunp.components.ValidComponent.constructor, component);
+			assert.equal(aunp.components.ValidComponent, component);
 		});
 
 	});
@@ -60,22 +60,26 @@ describe('Components', function() {
 			let component 	= require('./datasets/components/ComponentWithServices');
 			let Event 		= require('../lib/services/Event');
 			let Service 	= require('./services/ValidService');
+			let got;
 
 			init.loadServices(aunp);
 			aunp.add.component(component);
-			assert.equal(aunp.components.ComponentWithServices.services[0], Event);
-			assert.equal(aunp.components.ComponentWithServices.services[1], Service);
+			got = aunp.appliedComponents.ComponentWithServices;
+			assert.equal(got.services[0], Event);
+			assert.equal(got.services[1], Service);
 		});
 
 		it('should apply services', function () {
 			let component 	= require('./datasets/components/ComponentWithServices');
 			let Event 		= require('../lib/services/Event');
 			let Service 	= require('./services/ValidService');
+			let got;
 
 			init.loadServices(aunp);
 			aunp.add.component(component);
-			assert.equal(aunp.components.ComponentWithServices.serviceMethod, Service.serviceMethod);
-			assert.equal(aunp.components.ComponentWithServices.$emit, Event.$emit);
+			got = aunp.appliedComponents.ComponentWithServices;
+			assert.equal(got.serviceMethod, Service.serviceMethod);
+			assert.equal(got.emit, Event.emit);
 		});
 
 	});
